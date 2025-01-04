@@ -4,6 +4,25 @@ function App() {
 	const [elementsData, setElementsData] = useState([]);
 	const [errorMessage, setErrorMessage] = useState('');
 
+	const prcode = "https://store.epicgames.com/en-US/p/";
+
+  
+
+	  // Function to format the title and generate the URL
+	  function createGameLink(game) {
+		// Trim spaces from title and replace with hyphens
+		const formattedTitle = game.title
+		  .toLowerCase()
+		  .split(" ")
+		  .join("-");
+	
+		// Extract the unique identifier from customAttributes
+		const gameId = game.offerMappings?.[0]?.pageSlug;
+	
+		// Combine base URL with the formatted title and gameId
+		return `${prcode}${gameId}`;
+	  }
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -37,35 +56,43 @@ function App() {
 	}, []);
 
 	return (
-		<div className="container mx-auto p-4">
-			<h1 className="text-2xl font-bold mb-4">Free Games</h1>
+		<div className="container text-white  mx-auto p-4">
+			<h1 className="text-4xl text-center font-alieronheavy  mb-2">Free Games</h1>
+			<h1 className="text-lg text-center font-alieronlight text-[#6e6e73] mb-8">Developed by <span className='font-alieronsemi text-white ' >Gamers</span></h1>
 
 			{/* Display error message if present */}
-			{errorMessage && (
+			{/* {errorMessage && (
 				<div className="text-red-500 border border-red-500 p-4 rounded mb-4">
 					{errorMessage}
 				</div>
-			)}
+			)} */}
 
 			{/* Display games if data is available */}
+			<div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 shadow-lg ' >
 			{elementsData.length > 0 ? (
 				elementsData.map((game) => (
-					<div key={game.id} className="border p-4 mb-4 rounded">
-						<h2 className="text-xl font-semibold">{game.title}</h2>
-						<p>{game.description}</p>
-						<p>Effective Date: {new Date(game.effectiveDate).toLocaleDateString()}</p>
-						{game.keyImages?.[0]?.url && (
-							<img
-								src={game.keyImages[0].url}
-								alt={game.title}
-								className="w-full h-auto mt-2 rounded"
-							/>
-						)}
+					<div key={game.id} className="p-4 mb-4 rounded-xl bg-[#0F0F0F] flex flex-col justify-between space-y-3 ">
+						<div>
+							{game.keyImages?.[0]?.url && (
+								<img
+									src={game.keyImages[0].url}
+									alt={game.title}
+									className="w-full h-auto mt-2 rounded"
+								/>
+							)}
+							<h2 className="text-xl font-alieronbold mt-2">{game.title}</h2>
+							<p className='text-sm font-alieronregular mt-2 text-[#cccccc] ' >{game.description}</p>
+						</div>
+						<div className='flex flex-col lg:flex-row justify-between items-center space-y-2 lg:space-y-0 ' >
+							<a href={createGameLink(game)} className='bg-[#37AFE1] px-3 scale-100 w-full text-center lg:w-fit hover:scale-90 transition-all duration-300 text-black font-alieronregular py-0.5 text-sm rounded-full ' target="_blank" rel="noopener noreferrer">Open</a>
+							<p className='text-sm font-alieronsemi  text-[#6e6e73] w-full text-center lg:w-fit ' >Effective Date: {new Date(game.effectiveDate).toLocaleDateString()}</p>
+						</div>
 					</div>
 				))
 			) : (
 				!errorMessage && <p>No games available at the moment.</p>
 			)}
+			</div>
 		</div>
 	);
 }

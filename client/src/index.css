@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    background-color: #0C0C0C;
+}
+
+@font-face {
+    font-family: alieronbold;
+    src: url('./assets/fonts/Aileron-Bold.otf');
+}
+
+@font-face {
+    font-family: alieronheavy;
+    src: url('./assets/fonts/Aileron-Heavy.otf');
+}
+
+@font-face {
+    font-family: alieronsemi;
+    src: url('./assets/fonts/Aileron-SemiBold.otf');
+}
+
+@font-face {
+    font-family: alieronregular;
+    src: url('./assets/fonts/Aileron-Regular.otf');
+}
+
+@font-face {
+    font-family: alieronlight;
+    src: url('./assets/fonts/Aileron-Light.otf');
+}
