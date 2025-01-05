@@ -34,11 +34,12 @@ function App() {
 				import.meta.env.MODE === 'development'
 					? '/api/freeGamesPromotions' // Proxy for local development
 					: `${import.meta.env.VITE_API_BASE_URL}/freeGamesPromotions`; // Full URL for production
-					const response = await fetch(apiUrl);
+					const response = await fetch('/api/freeGamesPromotions');
 				if (!response.ok) {
 					throw new Error(`HTTP Error: ${response.status}`);
 				}
 				const data = await response.json();
+				console.log(data);
 				// console.log('Full API Response:', data);
 
 				// Ignore errors and focus on the actual data
