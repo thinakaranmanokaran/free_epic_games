@@ -39,7 +39,7 @@ function App() {
 					throw new Error(`HTTP Error: ${response.status}`);
 				}
 				const data = await response.json();
-				console.log(data);
+				// console.log(data);
 				// console.log('Full API Response:', data);
 
 				// Ignore errors and focus on the actual data
