@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/:path*",
+        "destination": "https://store-site-backend-static.ak.epicgames.com/:path*"
+      }
+    ]
+  }
+  
