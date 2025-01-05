@@ -31,3 +31,16 @@ body {
     font-family: alieronlight;
     src: url('./assets/fonts/Aileron-Light.otf');
 }
+
+body::-webkit-scrollbar{
+    background-color: #0C0C0C;
+    width: 10px;
+    /* scroll-margin-top: 20px; */
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: #0f0f0f;
+    border-radius: 60px;
+    
+}
+
