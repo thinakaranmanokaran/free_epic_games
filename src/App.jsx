@@ -30,7 +30,11 @@ function App() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch('/api/freeGamesPromotions');
+				const apiUrl = 
+				import.meta.env.MODE === 'development'
+					? '/api/freeGamesPromotions' // Proxy for local development
+					: `${import.meta.env.VITE_API_BASE_URL}/freeGamesPromotions`; // Full URL for production
+					const response = await fetch(apiUrl);
 				if (!response.ok) {
 					throw new Error(`HTTP Error: ${response.status}`);
 				}
