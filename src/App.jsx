@@ -16,10 +16,16 @@ function App() {
 
 		// Extract the unique identifier from offerMappings (first item in the array)
 		const gameId = game.offerMappings?.[0]?.pageSlug;
+		const nameId = game.productSlug;
 
 		// Combine base URL with the pageSlug
 		if (gameId) {
 			return `${prcode}${gameId}`;
+		}
+
+		// Combine base URL with the pageSlug
+		if (!gameId) {
+			return `${prcode}${nameId}`;
 		}
 
 		// Return a fallback URL if pageSlug is not found
@@ -89,13 +95,13 @@ function App() {
 							return priceA - priceB;
 						})
 						.map((game) => (
-							<div key={game.id} className="p-3 mb-4 rounded-xl bg-[#0F0F0F] flex flex-col justify-between space-y-3 ">
+							<div key={game.id} className="p-3 mb-4 rounded-2xl bg-[#0F0F0F] flex flex-col justify-between space-y-3 ">
 								<div>
 									{game.keyImages?.[0]?.url && (
 										<img
 											src={game.keyImages[0].url}
 											alt={game.title}
-											className="w-full min-h-44 max-h-48 object-cover object-center h-auto rounded"
+											className="w-full min-h-44 max-h-48 object-cover object-center h-auto rounded-xl "
 										/>
 									)}
 									<h2 className="text-xl font-alieronbold mt-2">{game.title}</h2>
@@ -113,7 +119,7 @@ function App() {
 									<div className='flex flex-col lg:flex-row mt-2 justify-between items-center space-y-2 lg:space-y-0'>
 										<a
 											href={createGameLink(game)}
-											className='bg-[#37AFE1] px-3 scale-100 w-full text-center lg:w-fit hover:scale-90 transition-all duration-300 text-black font-alieronregular py-0.5 text-sm rounded-full'
+											className='bg-[#37AFE1] px-8 scale-100 w-full text-center lg:w-fit hover:scale-90 transition-all duration-300 text-black font-alieronregular py-2 text-base rounded-full '
 											target="_blank"
 											rel="noopener noreferrer"
 										>
