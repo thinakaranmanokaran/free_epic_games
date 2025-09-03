@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Tell bots where to find the sitemap
+Sitemap: https://freegames-epicstore.vercel.app/sitemap.xml
+
+# Disallow any private admin paths (if they exist)
+# Disallow: /admin
